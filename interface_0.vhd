@@ -1,0 +1,38 @@
+--正常显示界面
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+
+entity  interface_0  is
+  port(
+      clk      :   in    std_logic;
+      hour     :   in    std_logic_vector(7 downto 0);
+      minute   :   in    std_logic_vector(7 downto 0);
+		
+		num24    :   out   std_logic_vector(23 downto 0)
+);
+end entity;
+
+architecture   rtl  of  interface_0  is
+ signal cnt    :  integer range 0 to 49999999;
+ constant t_1s :  integer:=49999999;
+begin
+
+process(clk,cnt)
+begin
+  if cnt=t_1s then cnt<=0;
+    elsif clk'event and clk='1' then cnt<=cnt+1;
+  end if;
+end process;
+
+process(cnt)
+begin
+if cnt>24999999 then num24(11 downto 8)<="1010";--左起第四个数码管闪烁
+  else num24(11 downto 8)<="1111";
+end if;
+end process;
+
+num24(23 downto 12)<="1111"&hour;                --左起第一个无显示，第二第三个显示时
+num24(7 downto 0)<=minute;                       --左起第五第六个显示分
+
+end architecture   rtl;
