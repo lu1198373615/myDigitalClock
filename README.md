@@ -17,7 +17,7 @@ This PDF file is already in this repository.
 
 * https://git-scm.com/downloads
 * 从上面的地址下载并安装后打开控制台,通过cd d:命令进入D盘
-* 往控制台输入命令git clone git@github.com:lu1198373615/freeWithWxJumpGame.git
+* 往控制台输入命令git clone git@github.com:lu1198373615/myDigitalClock.git
 * 短暂等待后，就可以在D盘根目录下找到本代码仓库所有代码及说明文档了
 
 需要安装QuartusII 12.1或更高版本
